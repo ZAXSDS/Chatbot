@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ask SENTINEL</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#0f1923;
+    color:white;
+}
+
+/* NAVIGATION */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:rgba(15,25,35,0.95);
+    z-index:999;
+}
+
+.logo{
+    color:#ff4655;
+    font-size:2rem;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:#ff4655;
+}
+
+/* HERO */
+
+.hero{
+    padding:150px 20px 30px;
+    text-align:center;
+}
+
+.hero .bot-icon{
+    font-size:5rem;
+    margin-bottom:10px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#ff4655;
+    letter-spacing:4px;
+}
+
+.hero .subtitle{
+    color:#c3ccd6;
+    max-width:700px;
+    margin:15px auto 0;
+    line-height:1.6;
+}
+
+/* CHATBOT */
+
+.chatbot{
+    padding:40px 20px 80px;
+    text-align:center;
+}
+
+.chat-window{
+    width:760px;
+    max-width:100%;
+    margin:auto;
+    background:#1b2530;
+    border:2px solid #ff4655;
+    text-align:left;
+}
+
+.chat-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#ff4655;
+    color:white;
+    font-weight:bold;
+    letter-spacing:2px;
+    padding:12px 20px;
+}
+
+.status{
+    font-size:.8rem;
+    font-weight:normal;
+    letter-spacing:1px;
+}
+
+.chat-log{
+    height:420px;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.msg{
+    max-width:75%;
+    margin-bottom:12px;
+    padding:12px 16px;
+    line-height:1.5;
+}
+
+.msg.bot{
+    background:#0f1923;
+    border-left:3px solid #ff4655;
+}
+
+.msg.user{
+    background:#ff4655;
+    color:white;
+    margin-left:auto;
+    text-align:right;
+}
+
+.chat-input{
+    display:flex;
+    border-top:2px solid #ff4655;
+}
+
+.chat-input input{
+    flex:1;
+    padding:16px;
+    border:none;
+    outline:none;
+    background:#0f1923;
+    color:white;
+    font-family:Arial, sans-serif;
+    font-size:1rem;
+}
+
+.chat-input button{
+    background:#ff4655;
+    color:white;
+    border:none;
+    padding:16px 34px;
+    font-weight:bold;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+.chat-input button:hover{
+    background:#ff2b40;
+}
+
+/* QUICK QUESTIONS */
+
+.chips-title{
+    margin:30px 0 15px;
+    color:#8c98a4;
+    font-size:.9rem;
+    letter-spacing:2px;
+}
+
+.chips{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    max-width:760px;
+    margin:auto;
+}
+
+.chip{
+    background:transparent;
+    border:1px solid #ff4655;
+    color:#ff4655;
+    padding:8px 16px;
+    font-size:.9rem;
+    font-family:Arial, sans-serif;
+    cursor:pointer;
+}
+
+.chip:hover{
+    background:#ff4655;
+    color:white;
+}
+
+/* TOPICS */
+
+.topics{
+    padding:0 20px 80px;
+    text-align:center;
+}
+
+.topics h2{
+    color:#ff4655;
+    margin-bottom:10px;
+}
+
+.topics p{
+    color:#8c98a4;
+    margin-bottom:30px;
+}
+
+.topic-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    max-width:900px;
+    margin:auto;
+}
+
+.topic{
+    border:1px solid #2c3a48;
+    color:#c3ccd6;
+    padding:10px 18px;
+    font-size:.9rem;
+}
+
+/* BUTTON */
+
+.btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:14px 35px;
+    background:#ff4655;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#ff2b40;
+    transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#999;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+VALORANT
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">HOME</a></li>
+<li><a href="index.html#story">STORY</a></li>
+<li><a href="index.html#agents">AGENTS</a></li>
+<li><a href="chatbot.html">CHATBOT</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="bot-icon">
+&#129302;
+</div>
+
+<h1>SENTINEL</h1>
+
+<p class="subtitle">
+Your VALORANT guide. Ask a question about the agents, the Spike, the maps,
+the weapons, the economy, ranks or esports, and SENTINEL will answer.
+</p>
+
+</section>
+
+<section class="chatbot">
+
+<div class="chat-window">
+
+<div class="chat-header">
+<span>SENTINEL // VALORANT GUIDE</span>
+<span class="status">ONLINE</span>
+</div>
+
+<div class="chat-log" id="chatLog"></div>
+
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Ask me about VALORANT...">
+<button onclick="sendMsg()">SEND</button>
+</div>
+
+</div>
+
+<p class="chips-title">
+QUICK QUESTIONS
+</p>
+
+<div class="chips">
+<button class="chip">Who is Jett?</button>
+<button class="chip">Who is Sage?</button>
+<button class="chip">What is the Spike?</button>
+<button class="chip">Vandal or Phantom?</button>
+<button class="chip">How does the economy work?</button>
+<button class="chip">How do ranks work?</button>
+<button class="chip">Any tips for a beginner?</button>
+</div>
+
+</section>
+
+<section class="topics">
+
+<h2>WHAT SENTINEL KNOWS</h2>
+
+<p>
+25 topics are stored in the bot. Type any of these words to unlock the answer.
+</p>
+
+<div class="topic-list">
+<div class="topic">Jett</div>
+<div class="topic">Sage</div>
+<div class="topic">Phoenix</div>
+<div class="topic">Reyna</div>
+<div class="topic">Raze</div>
+<div class="topic">Sova</div>
+<div class="topic">Omen</div>
+<div class="topic">Viper</div>
+<div class="topic">Cypher</div>
+<div class="topic">Killjoy</div>
+<div class="topic">The Spike</div>
+<div class="topic">Vandal &amp; Phantom</div>
+<div class="topic">Operator</div>
+<div class="topic">Abilities &amp; ultimates</div>
+<div class="topic">Maps</div>
+<div class="topic">Economy</div>
+<div class="topic">Rounds</div>
+<div class="topic">Ranks</div>
+<div class="topic">Game modes</div>
+<div class="topic">Esports</div>
+<div class="topic">Beginner tips</div>
+<div class="topic">Agents &amp; roles</div>
+<div class="topic">What is VALORANT</div>
+<div class="topic">Hello</div>
+<div class="topic">Thanks</div>
+</div>
+
+<a href="index.html" class="btn">
+BACK TO START
+</a>
+
+</section>
+
+<footer>
+
+VALORANT Branching Narrative Project
+
+</footer>
+
+<script>
+/* ===================================================================
+   SIMPLE RULE-BASED CHATBOT  -  VALORANT EDITION
+   The bot is called SENTINEL. Every entry in the KNOWLEDGE list has
+   trigger keywords and the answer the bot replies with. The list is
+   read from top to bottom and the first entry with a matching keyword
+   wins, so specific topics (the agents) are placed above general ones
+   ("what is valorant"). Add more entries the same way.
+   =================================================================== */
+
+const KNOWLEDGE = [
+  { keywords: ["hello","hi","hey","yo"],
+    answer: "Hey recruit! I'm SENTINEL, your VALORANT guide. Ask me about Jett, Sage, the other agents, the Spike, maps, weapons, the economy, ranks or esports." },
+  { keywords: ["jett","wind","dash","knives"],
+    answer: "Jett is a Duelist from South Korea. Cloudburst blocks vision, Updraft lifts her into the air, Tailwind dashes her out of danger, and her ultimate Blade Storm arms her with deadly throwing knives." },
+  { keywords: ["sage","heal","heals","healing","revive","resurrect"],
+    answer: "Sage is a Sentinel from China. She heals her teammates, slows enemies with Slow Orb, blocks a path with Barrier Orb, and her ultimate Resurrection brings a dead teammate back to life." },
+  { keywords: ["phoenix","fire","flames","flash"],
+    answer: "Phoenix is a Duelist from the UK who fights with fire. He heals himself by standing in his own flames, and his ultimate Run It Back sends him back to where he started with full health if he dies." },
+  { keywords: ["reyna","empress","souls"],
+    answer: "Reyna is a Duelist from Mexico who gets stronger with every kill. Each kill leaves a soul orb she can use to heal or to turn invisible, so she rewards confident aim over teamwork." },
+  { keywords: ["raze","boom","rocket","explosives","explosive"],
+    answer: "Raze is a Duelist from Brazil built around explosives. Her Boom Bot hunts enemies down, Blast Packs launch her across the map, and her ultimate Showstopper is a rocket launcher." },
+  { keywords: ["sova","arrow","arrows","recon","scan"],
+    answer: "Sova is an Initiator from Russia who hunts down information. His Recon Bolt reveals enemy positions, the Owl Drone scouts a site ahead of the team, and Hunter's Fury fires energy blasts through walls." },
+  { keywords: ["omen","teleport","shadow","paranoia"],
+    answer: "Omen is a Controller who plays on fear. He blinds enemies with Paranoia, drops dark smokes anywhere on the map, and his ultimate teleports him to almost any spot on the map." },
+  { keywords: ["viper","poison","toxic","chemicals"],
+    answer: "Viper is a Controller who uses chemicals. Her Toxic Screen cuts a site in half, Snake Bite burns anyone standing in it, and Viper's Pit hides a whole area in acid fog." },
+  { keywords: ["cypher","trap","traps","trapwire","camera","spycam"],
+    answer: "Cypher is a Sentinel from Morocco, the information broker. His Trapwires and Spycam watch a flank while the team plays elsewhere, and his ultimate reveals the position of every living enemy." },
+  { keywords: ["killjoy","turret","robot","alarmbot","nanoswarm"],
+    answer: "Killjoy is a Sentinel from Germany who defends with gadgets. Her Turret shoots at enemies, Nanoswarm grenades punish a plant, and Lockdown detains everyone caught inside it." },
+  { keywords: ["spike","bomb","plant","planting","defuse","defusing"],
+    answer: "The Spike is the bomb. Attackers plant it on a site and it explodes 45 seconds later. Defenders need 7 seconds to defuse it, with a checkpoint halfway, so a fake defuse can bait enemies out of cover." },
+  { keywords: ["vandal","phantom","rifle","rifles"],
+    answer: "The Vandal and the Phantom both cost 2900 credits. The Vandal kills with one headshot at any range, while the Phantom is silenced, fires faster and is easier to control, but loses damage far away." },
+  { keywords: ["operator","sniper","op","awp"],
+    answer: "The Operator is the sniper rifle at 4700 credits. One hit to the body is a kill, but it is slow and expensive, so it works best when you hold a long angle and reposition after every shot." },
+  { keywords: ["ability","abilities","ultimate","ultimates","ult","ults","orb","orbs"],
+    answer: "Abilities are bought with credits at the start of a round, while ultimates charge over time. You earn ultimate points from kills, deaths, planting or defusing the Spike, and from the orbs placed around the map." },
+  { keywords: ["map","maps","site","sites","bind","haven","ascent","split","callouts"],
+    answer: "Every map has its own layout. Most have two Spike sites, but Haven has three, so defenders spread thinner. Learning the callouts and angles of one or two maps helps far more than playing all of them." },
+  { keywords: ["credit","credits","money","economy","eco","buy","save","saving"],
+    answer: "Each round you spend credits on weapons, shields and abilities. Kills and Spike plants pay you back, and losing rounds increases your bonus, so teams often save on purpose and buy together the round after." },
+  { keywords: ["round","rounds","win","overtime","score","attack","attackers","defence","defense","defenders"],
+    answer: "A match is first to 13 rounds. Attackers try to plant the Spike or kill the enemy team, defenders try to stop them, and both teams swap sides after 12 rounds. A 12-12 score goes to overtime." },
+  { keywords: ["rank","ranks","ranked","radiant","immortal","iron"],
+    answer: "Competitive ranks run from Iron up through Bronze, Silver, Gold, Platinum, Diamond, Ascendant and Immortal, all the way to Radiant, which is kept for the very best players in each region." },
+  { keywords: ["mode","modes","deathmatch","spike rush","escalation","swiftplay","premier","unrated"],
+    answer: "Besides Unrated and Competitive there are shorter modes: Swiftplay, Spike Rush, Escalation and Team Deathmatch. Deathmatch is the quickest way to warm up your aim before a serious match." },
+  { keywords: ["esport","esports","vct","champions","masters","pro","tournament"],
+    answer: "VALORANT esports runs through the VCT. Regional leagues feed into international Masters events, and the season finishes at Champions, the biggest tournament of the year." },
+  { keywords: ["tip","tips","beginner","improve","aim","crosshair","practice"],
+    answer: "Keep your crosshair at head level, stop moving before you shoot, and use your abilities with your team instead of alone. Clear communication wins more rounds than flashy aim ever will." },
+  { keywords: ["agent","agents","role","roles","duelist","duelists","controller","initiator","sentinel","character","who should i play"],
+    answer: "Agents are the playable characters, each with four abilities and one of four roles: Duelists take the first fight, Initiators reveal enemies and open a site, Controllers smoke off angles, and Sentinels lock down space. Jett rewards speed, Sage rewards patience." },
+  { keywords: ["valorant","riot","tactical shooter","what is valorant","about the game"],
+    answer: "VALORANT is a free 5v5 tactical shooter from Riot Games, released in June 2020. It mixes precise gunplay with agent abilities, and every round is decided by the Spike." },
+  { keywords: ["thanks","thank you","bye","goodbye","cheers"],
+    answer: "Anytime, agent. Good luck out there, and keep that crosshair up." }
+];
+
+const FALLBACK = "I'm still learning about that one! Try asking about Jett, Sage, the Spike, the maps, the Vandal, the economy, ranks or VALORANT esports.";
+
+const log = document.getElementById('chatLog');
+const input = document.getElementById('chatInput');
+
+function addMsg(text, who) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + who;
+  div.textContent = text;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+function getReply(text) {
+  // punctuation is turned into spaces so keywords are matched as whole
+  // words: this stops "hi" from matching inside a word like "which"
+  const q = ' ' + text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() + ' ';
+  for (const item of KNOWLEDGE) {
+    if (item.keywords.some(k => q.includes(' ' + k + ' '))) return item.answer;
+  }
+  return FALLBACK;
+}
+
+function sendMsg() {
+  const text = input.value.trim();
+  if (!text) return;
+  addMsg(text, 'user');
+  input.value = '';
+  // small delay so it feels like the bot is replying
+  setTimeout(() => addMsg(getReply(text), 'bot'), 450);
+}
+
+// the Enter key sends the message as well as the SEND button
+input.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') sendMsg();
+});
+
+// the quick question buttons under the chat window
+document.querySelectorAll('.chip').forEach(function (chip) {
+  chip.addEventListener('click', function () {
+    input.value = chip.textContent;
+    sendMsg();
+  });
+});
+
+// Greeting on load
+addMsg("Hey recruit! I'm SENTINEL, your VALORANT guide. Ask me anything about the agents, the Spike or how the game works.", 'bot');
+
+</script>
+
+</body>
+
+</html>
